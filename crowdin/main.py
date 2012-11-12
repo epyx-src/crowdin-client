@@ -15,6 +15,10 @@ def main():
                       help="Show the version number and exit")
     parser.add_option('-d', '--debug', dest="debug", action="store_true",
                       help="Be more verbose")
+    parser.add_option(
+        '-a', '--all', dest="include_source", action="store_true",
+        help="Push all translation, not just the source translation."
+    )
     options, args = parser.parse_args()
 
     if options.version:
@@ -46,7 +50,7 @@ def main():
         conf = json.loads(f.read())
 
     if action == 'push':
-        push(conf)
+        push(conf, include_source=options.include_source)
 
     elif action == 'pull':
         pull(conf)

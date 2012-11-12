@@ -7,7 +7,7 @@ from .api import API
 logger = logging.getLogger('crowdin')
 
 
-def push(conf):
+def push(conf, include_source):
     api = API(project_name=conf['project_name'], api_key=conf['api_key'])
 
     info = api.info()
@@ -27,6 +27,9 @@ def push(conf):
         # Upload reference translations
         api.put(localization['source_path'],
                 localization['remote_path'], info)
+
+        if not include_source:
+            continue
 
         # Upload local translations
         for lang, path in localization['target_langs'].items():

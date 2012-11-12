@@ -54,3 +54,14 @@ Push source files::
 Pull translations::
 
     crowdin pull
+
+If you're importing a project with existing translations to crowdin, run
+``crowdin push -a`` to also upload the local target files to crowdin. The
+``-a`` flag should only be used once, you must then use the push / review /
+pull workflow provided by Crowdin.
+
+Changelog
+---------
+
+* 0.2: Added ``-a`` flag to ``crowdin push``.
+* 0.1: initial version.
