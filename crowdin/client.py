@@ -50,7 +50,10 @@ def pull(conf):
 
     for localization in conf['localizations']:
         for language, path in localization['target_langs'].items():
-            zip_path = '{0}/{1}'.format(language, localization['remote_path'])
+            remote = localization['remote_path']
+            if remote.endswith(".resx"):
+                remote = remote.replace(".resx", "." + language + ".resx")
+            zip_path = '{0}/{1}'.format(language, remote)
 
             try:
                 translated = translations.read(zip_path)
