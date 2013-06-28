@@ -65,7 +65,7 @@ class Crowdin_GET(Patched):
             response.status_code = 200
             return response
         else:
-            assert NotImplemented
+            assert NotImplementedError
 
 
 class Crowdin_POST(Patched):
