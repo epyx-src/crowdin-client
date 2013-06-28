@@ -1,2 +1,7 @@
+*.pyc
 crowdin_client.egg-info/
 dist
+env
+.coverage
+.idea
+htmlcov
