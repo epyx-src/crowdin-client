@@ -1,7 +1,9 @@
 coverage:
-	coverage run --source=crowdin test
+	coverage run --source=crowdin setup.py test
 	coverage html
+
+showcov: coverage
 	open htmlcov/index.html
 
 test:
-	python test
+	python setup.py test

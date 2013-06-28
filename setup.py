@@ -44,4 +44,5 @@ setup(
     scripts=[
         'scripts/crowdin',
     ],
+    test_suite='tests',
 )
