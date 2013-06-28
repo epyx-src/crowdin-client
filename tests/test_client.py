@@ -72,6 +72,45 @@ class APITest(unittest.TestCase):
 
     @mock.patch("requests.get")
     @mock.patch("requests.post")
+    def test_push_create_dir(self, post, get):
+        os.chdir(test_path)
+        mock_get = Crowdin_GET(get, info={
+            'files': []
+        })
+        mock_post = Crowdin_POST(post)
+        config_file = 'data/.crowdin.push.ok'
+        with open(config_file, 'r') as f:
+            conf = json.loads(f.read())
+
+        push(conf, include_source=True)
+
+        post_by_type = mock_post.call_by_type
+        get_by_type = mock_get.call_by_type
+
+        # info called 3 times ( initial / upload single / upload multi )
+        self.assertEqual(len(get_by_type['info']), 3)
+
+        # Should have created 3 directory using 'add-directory'
+        # create dir main is called twice, because /info does
+        # not return the previously created dir ( test only )
+        self.assertEqual(len(post_by_type['add-directory']), 4)
+        added_dir = [x['params']['name']
+                     for x in post_by_type['add-directory']]
+        self.assertIn('main', added_dir)
+        self.assertIn('main/simple', added_dir)
+        self.assertIn('main/multi', added_dir)
+
+        # Should have performed 'add-file' 3 times
+        self.assertEqual(len(post_by_type['add-file']), 3)
+        files = []
+        for i in post_by_type['add-file']:
+            files.extend(i['files'].keys())
+        self.assertIn('files[main/simple/file.po]', files)
+        self.assertIn('files[main/multi/good.po]', files)
+        self.assertIn('files[main/multi/good2.po]', files)
+
+    @mock.patch("requests.get")
+    @mock.patch("requests.post")
     def test_pull_ok(self, post, get):
         os.chdir(test_path)
         mock_get = Crowdin_GET(get, info={

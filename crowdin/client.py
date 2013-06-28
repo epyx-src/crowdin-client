@@ -2,7 +2,6 @@ import fnmatch
 import glob
 import logging
 import os
-import re
 
 from .api import API
 
@@ -25,7 +24,7 @@ def push_dir(api, localization, info,  include_source):
         return
 
     # remove trailing slash
-    dirs = remote_path.split('/')[-1]
+    dirs = remote_path.split('/')[:-1]
 
     for index in range(len(dirs)):
         name = "/".join(dirs[:index + 1])

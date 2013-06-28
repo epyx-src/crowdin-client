@@ -31,6 +31,7 @@ class Patched(object):
         self.current_call = {
             'url': url,
             'files': files,
+            'params': params,
             'type': url.split("/")[-1],
         }
         result = self.do_call(url,  *args, **kwargs)
@@ -42,7 +43,8 @@ class Patched(object):
 
     @property
     def call_by_type(self):
-        result = {}
+        result = dict()
+        self.calls.sort(key=lambda c: c['type'])
         for k, v in itertools.groupby(self.calls, key=lambda x: x['type']):
             result[k] = list(v)
         return result
