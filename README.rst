@@ -3,7 +3,7 @@ Crowdin-client
 
 .. image:: https://travis-ci.org/epyx-src/crowdin-client.png?branch=master
 	:alt: Build Status
-
+	:target: https://travis-ci.org/epyx-src/crowdin-client
 
 A client for the `Crowdin`_ API which lets you push source translations to
 crowdin and pull translated content.
