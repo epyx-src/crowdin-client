@@ -3,7 +3,6 @@ import logging
 import mock
 import os
 import unittest
-import sys
 import shutil
 
 

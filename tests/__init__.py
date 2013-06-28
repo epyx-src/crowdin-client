@@ -31,7 +31,6 @@ class Patched(object):
         self.current_call = {
             'url': url,
             'files': files,
-            'params': params,
             'type': url.split("/")[-1],
         }
         result = self.do_call(url,  *args, **kwargs)
