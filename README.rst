@@ -59,7 +59,7 @@ following structure::
     }
 
 The second entry in the json is to use a complete directory as translation source / destination.
-Usefull for documentation. DO NOT FORGET the trailing slash for directories.
+Useful for documentation. DO NOT FORGET the trailing slash for directories.
 
 Usage
 -----
