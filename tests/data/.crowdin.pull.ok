@@ -1,0 +1,25 @@
+{
+	"project_name": "test-project",
+	"api_key": "test-api-key",
+	"localizations": [
+		{
+			"source_path": "_data/locale/en/simple/file.po",
+			"remote_path": "main/simple/file.po",
+			"target_langs": {
+				"en": "_data/locale/en/simple/file.po",
+				"fr": "_data/locale/fr/simple/file.po",
+				"it": "_data/locale/it/simple/file.po"
+			}
+		},
+		{
+			"source_path": "_data/locale/en/multi/*.po",
+			"excluded": "no-*,wrong-*",
+			"remote_path": "main/multi/",
+			"target_langs": {
+				"en": "_data/locale/en/multi/",
+				"fr": "_data/locale/fr/multi/",
+				"it": "_data/locale/it/multi/"
+			}
+		}
+	]
+}

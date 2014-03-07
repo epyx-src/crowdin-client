@@ -1,6 +1,10 @@
 Crowdin-client
 ==============
 
+.. image:: https://travis-ci.org/epyx-src/crowdin-client.png?branch=master
+	:alt: Build Status
+	:target: https://travis-ci.org/epyx-src/crowdin-client
+
 A client for the `Crowdin`_ API which lets you push source translations to
 crowdin and pull translated content.
 
@@ -40,9 +44,22 @@ following structure::
                     "de": "locale/de/LC_MESSAGES/django.po",
                     "it": "locale/it/LC_MESSAGES/django.po"
                 }
+            },
+            {
+            	"source_path": "locale/en/LC_MESSAGES/*.po",
+            	"excluded" : "_*, ~*",
+            	"remote_path": "path/to/",
+            	"target_langs": {
+                    "fr": "locale/en/LC_MESSAGES/",
+                    "de": "locale/de/LC_MESSAGES/",
+                    "it": "locale/it/LC_MESSAGES/"
+                }
             }
         ]
     }
+
+The second entry in the json is to use a complete directory as translation source / destination.
+Useful for documentation. DO NOT FORGET the trailing slash for directories.
 
 Usage
 -----

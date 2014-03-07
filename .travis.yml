@@ -1,0 +1,17 @@
+language: python
+
+python:
+  - "2.7"
+
+install:
+  - pip install -r requirements-dev.txt
+
+before_script:
+  - pep8 crowdin tests
+
+script:
+  - PYTHONPATH=. make coverage
+
+after_success:
+  - coveralls
+
