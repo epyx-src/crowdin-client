@@ -144,6 +144,10 @@ def pull_dir(api, localization, translations):
             return
 
         for zip_name in translations.namelist():
+            if zip_name.endswith('/'):
+                # don't care about folders, they will be created with
+                # os.makedirs later
+                continue
             base_dir, file_name = os.path.split(zip_name)
             base_dir = "{0}/".format(base_dir)
             zip_path = '{0}/{1}'.format(language, localization['remote_path'])
