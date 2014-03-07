@@ -80,5 +80,6 @@ pull workflow provided by Crowdin.
 Changelog
 ---------
 
+* 0.3: Added support for wildcard character to manage folders in translations
 * 0.2: Added ``-a`` flag to ``crowdin push``.
 * 0.1: initial version.
