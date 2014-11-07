@@ -130,7 +130,6 @@ def pull_file(api, localization, translations):
                 logging.error(ex)
                 if ex.errno != 17:
                     raise
-                pass
         logger.info("Writing {0}".format(path))
         with open(path, 'wb') as f:
             f.write(translated)
