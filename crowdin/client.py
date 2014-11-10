@@ -123,11 +123,13 @@ def pull_file(api, localization, translations):
             continue
 
         directory = os.path.dirname(path)
-        try:
-            os.makedirs(directory)
-        except OSError as ex:
-            logging.error(ex)
-            pass
+        if not os.path.isdir(directory):
+            try:
+                os.makedirs(directory)
+            except OSError as ex:
+                logging.error(ex)
+                if ex.errno != 17:
+                    raise
         logger.info("Writing {0}".format(path))
         with open(path, 'wb') as f:
             f.write(translated)
